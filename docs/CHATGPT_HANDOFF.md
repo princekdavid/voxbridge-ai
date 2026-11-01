@@ -32,7 +32,7 @@ Ingest → probe/validate → extract/normalize → optional dialogue/background
 - Benchmark intelligibility, WER, diarization, translation adequacy, speaker similarity, naturalness, timing, background retention, runtime, and compute.
 
 ## Repository implementation checkpoint
-Committed scaffold currently includes:
+Committed scaffold includes:
 - FastAPI app with root, health, and capabilities endpoints.
 - Pydantic settings configuration.
 - Initial ASR/translation/TTS protocol contracts and base adapter abstraction.
@@ -41,12 +41,25 @@ Committed scaffold currently includes:
 - Backend GitHub Actions test workflow.
 - Product/architecture/quality/security/handoff documentation.
 
-This is only a starter scaffold. Upload, database persistence, FFmpeg processing, async jobs, actual model integrations, transcript/translation editing, consent-backed voice profiles, mixing, and export are not implemented. Backend tests and frontend build have not yet been run/verified at the time of this checkpoint.
+This is only a starter scaffold. Upload, database persistence, FFmpeg processing, async jobs, actual model integrations, transcript/translation editing, consent-backed voice profiles, mixing, and export are not implemented.
+
+## Current working branch checkpoint (2026-11-02)
+Branch: `chore/restore-prd-and-verify-ci` (not yet merged to main).
+- The root `PRD.md` referenced by README and AGENTS was missing from main (404). It has been restored on the working branch by consolidating requirements already present in the existing specification/decision documents; no new product decisions were introduced.
+- `.github/workflows/ci.yml` now includes backend pytest and frontend TypeScript/Vite production build jobs.
+- `PROJECT_STATUS.md` and `ROADMAP.md` record verification evidence and blockers.
+- Backend health tests: 2 passed in a temporary reconstruction of fetched source files; this is not a complete repository checkout test.
+- Frontend build has not yet run: npm dependencies were unavailable in the offline execution environment.
+- No frontend package-lock.json was found. Add one and switch CI to `npm ci` before calling frontend dependency installation reproducible.
+- The supplied starter archive mentioned in Phase 0 was not found; do not mark that task complete without locating it or explicitly retiring the task.
+- Hosted CI for this branch is still pending; verify both jobs before merging.
 
 ## Next steps
-1. Run backend tests and frontend production build; fix any issues and verify CI.
-2. Implement Phase 1 media ingest: project/media persistence, secure upload, ffprobe validation, local storage abstraction, FFmpeg extraction, background job state, and tests.
-3. Continue in roadmap order and update PROJECT_STATUS.md after each milestone.
+1. Open/verify the pull request for `chore/restore-prd-and-verify-ci` and inspect hosted CI results.
+2. Fix CI failures; add a committed frontend lockfile and use `npm ci`.
+3. Locate/provide the Phase 0 starter archive, or explicitly decide to retire that roadmap item.
+4. Finish Phase 0 setup/CI verification.
+5. Start Phase 1 media ingest only after Phase 0 release gates are satisfied.
 
 ## Working style
 User prefers practical incremental implementation, clear status, and repository documentation that prevents assumptions. Do not ask the user to restate decisions captured here. Be candid about limitations and costs; prefer free/local options.
