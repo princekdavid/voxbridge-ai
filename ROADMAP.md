@@ -6,10 +6,10 @@ Status meanings: **Planned** = not implemented; **In progress** = actively being
 - [x] Define product vision and initial MVP boundaries.
 - [x] Establish architecture direction and replaceable adapter strategy.
 - [x] Record licensing, consent, quality, and safety constraints.
-- [ ] Import and verify the starter application foundation from the supplied project archive.
-- [ ] Establish reproducible backend/frontend setup and CI.
+- [ ] Import and verify the starter application foundation from the supplied project archive. **Blocked:** the archive was not found in the repository paths inspected or in the current working context; do not assume the existing scaffold is that archive.
+- [ ] Establish reproducible backend/frontend setup and CI. **In progress:** backend pytest workflow exists and frontend TypeScript/Vite build job has been added on `chore/restore-prd-and-verify-ci`; hosted CI result is pending and frontend `package-lock.json` is not yet present. Use `npm ci` once the lockfile is committed.
 
-## Phase 1 — Media ingest (next implementation milestone)
+## Phase 1 — Media ingest (next implementation milestone after Phase 0)
 - [ ] Project CRUD and persistence.
 - [ ] Secure upload for MP3/WAV/MP4/MOV.
 - [ ] File size, extension, MIME, and ffprobe validation.
