@@ -4,7 +4,8 @@ Last updated: 2026-11-02
 
 ## Current truth
 - Public repository: https://github.com/princekdavid/voxbridge-ai
-- Default branch: main. Current work is isolated on branch `chore/restore-prd-and-verify-ci`; changes are not yet merged.
+- Default branch: main. Current work is isolated on branch `chore/restore-prd-and-verify-ci` and is proposed in PR #1: https://github.com/princekdavid/voxbridge-ai/pull/1. Changes are not yet merged.
+- No workflow runs were returned for the PR head commit at the time of this checkpoint; hosted CI is still unverified.
 - The required `PRD.md` was missing from the default branch (GitHub returned 404). A canonical PRD has now been restored on the working branch using only decisions and requirements already present in README.md, docs/MVP_SPECIFICATION.md, ARCHITECTURE.md, docs/DECISIONS.md, docs/MODEL_EVALUATION.md, and docs/SECURITY_AND_CONSENT.md. No product decisions were intentionally changed.
 - Product definition, MVP specification, architecture, decisions, model evaluation, API contract, test strategy, security/consent policy, roadmap, AI contributor instructions, and ChatGPT handoff are committed in the repository.
 - A minimal application scaffold exists: FastAPI health/capability endpoints, adapter protocol examples, a pytest health test, React/Vite landing screen, configuration, and backend CI workflow.
