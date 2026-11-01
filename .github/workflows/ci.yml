@@ -1,18 +1,43 @@
 name: CI
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
+permissions:
+  contents: read
+
 jobs:
   backend:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -e ".[dev]"
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+      - name: Install backend and development dependencies
+        run: pip install -e ".[dev]"
         working-directory: backend
-      - run: pytest
+      - name: Run backend tests
+        run: pytest -q
         working-directory: backend
+
+  frontend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install frontend dependencies
+        run: npm install --no-audit --no-fund
+        working-directory: frontend
+      - name: Build frontend
+        run: npm run build
+        working-directory: frontend
