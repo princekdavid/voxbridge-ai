@@ -31,14 +31,22 @@ Ingest → probe/validate → extract/normalize → optional dialogue/background
 - Candidate research only: faster-whisper/Whisper for ASR; pyannote.audio for diarization (gated access/license); Demucs as a baseline only (upstream archived; assess alternatives); SeamlessM4T or NLLB for translation; XTTS-v2, Qwen3-TTS, and Chatterbox as TTS candidates requiring checkpoint/language/license verification. These are not final selections.
 - Benchmark intelligibility, WER, diarization, translation adequacy, speaker similarity, naturalness, timing, background retention, runtime, and compute.
 
-## Implementation checkpoint
-At the time this handoff was written, product/architecture docs have been created in the repository. The previous chat also generated a starter archive with FastAPI health/capability endpoints, pytest health test, React/Vite starter UI, adapter contracts, CI workflow, and docs. That archive has not yet been imported/verified in this repository. Do not claim the application foundation is present until inspecting the tree.
+## Repository implementation checkpoint
+Committed scaffold currently includes:
+- FastAPI app with root, health, and capabilities endpoints.
+- Pydantic settings configuration.
+- Initial ASR/translation/TTS protocol contracts and base adapter abstraction.
+- One pytest health/capabilities test module.
+- React + TypeScript + Vite landing screen and frontend configuration.
+- Backend GitHub Actions test workflow.
+- Product/architecture/quality/security/handoff documentation.
+
+This is only a starter scaffold. Upload, database persistence, FFmpeg processing, async jobs, actual model integrations, transcript/translation editing, consent-backed voice profiles, mixing, and export are not implemented. Backend tests and frontend build have not yet been run/verified at the time of this checkpoint.
 
 ## Next steps
-1. Import/reconcile starter archive from previous chat if available to user/new environment.
-2. Establish reproducible backend/frontend setup and CI.
-3. Implement Phase 1 media ingest: project/media persistence, secure upload, ffprobe validation, local storage abstraction, FFmpeg extraction, background job state, tests.
-4. Keep progress current in PROJECT_STATUS.md.
+1. Run backend tests and frontend production build; fix any issues and verify CI.
+2. Implement Phase 1 media ingest: project/media persistence, secure upload, ffprobe validation, local storage abstraction, FFmpeg extraction, background job state, and tests.
+3. Continue in roadmap order and update PROJECT_STATUS.md after each milestone.
 
 ## Working style
 User prefers practical incremental implementation, clear status, and repository documentation that prevents assumptions. Do not ask the user to restate decisions captured here. Be candid about limitations and costs; prefer free/local options.
